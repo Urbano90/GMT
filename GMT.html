@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GMT NACIONAL</title>
+  <link rel="stylesheet" href="./css/style.css"><meta name="title" content="GLOBAL EXCHANGE FINANCE">
+  <meta name="description" content="Somos una empresa que se encarga de realizar envios nacionales e internacionales, tambien realizamos cambio de divisas.">
+  <meta name="Imagen" content="./icon/LOGO-GLOBAL.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://globalexchancefinance.com">
+  <meta property="og:title" content="GLOBAL EXCHANCE FINANCE">
+  <meta property="og:description" content="Somos una empresa que se encarga de realizar envios nacionales e internacionales, tambien realizamos cambio de divisas">
+  <meta property="og:image" content="./icon/LOGO-GLOBAL.png">
+  
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="">
+  <meta property="twitter:title" content="GLOBAL EXCHANGE FINANCE">
+  <meta property="twitter:description" content="Somos una empresa que se encarga de realizar envios nacionales e internacionales, tambien realizamos cambio de divisas">
+  <meta property="twitter:image" content="./icon/LOGO-GLOBAL.png">
+  <link rel="icon" type="image/png" href="./icon/LOGO-GLOBAL.png">
+</head>
+<body>
+  <div class="form-container"> 
+    <div class="img">
+      <img  src="./img/logo-GMT.png" alt="">
+      <div class="text-logo">
+        <strong>GLOBAL EXCHANGE FINANCE S.A</strong> <br>
+        <span>Oficina de cambio y envio  de dinero</span><br>
+        <span>Envio de dinero-Logistica- Cambio</span> <br>
+        <span>Tel: 333 096 514 / 222 686 783</span>
+      </div>   
+    </div><br>
+
+    <h2 class="title">REGISTRO DE DATOS</h2>
+
+    <label class="date" for="sender">Fecha:
+      <input type="datetime-local" class="date" id="date" name="sender" required>
+    </label>
+    <form class="invoice-form" id="invoice-form">
+
+    <!--Datos del Agente --> 
+    <div class="agencia">
+      <label for="agente">Agente de caja:
+        <input type="text" id="agente" name="agente" required>
+      </label><br>
+      <label for="agencia">Agencia:
+        <input type="text" id="agencia" name="agencia" required>
+      </label>
+      <label for="contacto">Contacto:
+        <input type="tel" id="contacto" name="contacto" required>
+      </label><br>
+    </div>
+      
+    <!--Datos del Remitente --> 
+    <div class="remitente">
+      <h3>Datos del remitente</h3>
+      <label for="sender">Nombre del Remitente:
+        <input type="text" id="sender" name="sender" required>
+      </label> <br>
+      <label for="direction33">Dirección:
+        <input type="text" id="direction" name="amount" step="0.01" required>
+      </label> 
+      <label for="dip">Nº DIP:
+        <input type="number" id="dip" name="amount" step="0.01" required>
+      </label> <br>
+
+      <label for="telremitente">Tel. remitente:
+        <input type="tel" id="telremitente" name="tel" step="0.01" required>
+      </label> 
+
+      <label for="amount">Monto Enviado:
+        <input type="number" id="amount" name="amount" step="0.01" required>
+      </label><br>
+
+    </div>
+    <!--Datos del Beneficiario -->
+    <div class="beneficiario">
+      <h3>Datos del Beneficiario</h3>
+      <label for="sender">Nombre del Beneficiario:
+        <input type="text" id="receiver" name="sender" required>
+      </label> <br>
+
+      <label for="directionreceiver">Dirección:
+        <input type="text" id="directionreceiver" name="amount" step="0.01" required>
+      </label> 
+
+      <label for="telreceive">Nº Telefono:
+        <input type="tel" id="telreceive" name="amount" step="0.01" required>
+      </label><br>
+    </div>
+
+      <button type="button" class="btn" onclick="generateInvoice()">Generar Factura</button>
+    </form>
+  </div>
+
+  <div class="invoice-container" id="invoice">
+    <div class="img">
+      <img id="invoice-img"  src="./img/logo-GMT.png" alt="">
+      <div class="text-logo">
+        <strong>GLOBAL EXCHANGE FINANCE S.A</strong> <br>
+        <span>Oficina de cambio y envio  de dinero</span><br>
+        <span>Envio de dinero-Logistica- Cambio</span> <br>
+        <span>Tel: 333 096 514 / 222 686 783</span>
+      </div>
+    </div>
+    <div class="superior">
+      <h3 class="title2">Factura - GMT NACIONAL</h3>
+      <p>Fecha: <span class="date" id="invoice-date"></span></strong> </p>
+    </div>
+
+    <div class="datos">
+      <div class="datos1">
+        <p>Agente: <span id="invoice-agente"></span></p>
+        <p>Agencia: <span id="invoice-agencia"></span></p>
+        <p>Contacto: <span id="invoice-contacto"></span></p> 
+        <p class="codigo">CÓDIGO: <span id="invoice-number"></span></p>
+        <h4>DATOS DEL BENEFICIARIO</h4>
+        <p>Destinatario:<span id="invoice-receiver"></span></p>
+        <p>Ciudad:<span id="invoice-directionreceiver"></span></p>
+        <p>Tel. destinatario:<span id="invoice-telreceive"></span></p> 
+    
+      </div>
+        <div class="datos2">
+          <h4>DATOS DEL REMITENTE</h4>
+        <p>Remitente: <span id="invoice-sender"></span></p>
+        <p>Dirección: <span id="invoice-direction"></span></p>
+        <p>Nº DIP: <span id="invoice-dip"></span></p>
+        <p>Tel. remitente: <span id="invoice-telremitente"></span></p>
+        <p>Monto Enviado: <span id="invoice-amount"></span> FCFA</p>
+        </div>
+    </div>
+    <section class="firmas">
+      <div class="firma" id="firma">Firma la Cajera</div>
+      <div class="firma" name="firma" id="firma">Firma del Cliente</div>
+    </section>
+  </div>
+  <button class="btn, imprimir" onclick="printInvoice()">Imprimir Factura</button>
+
+  <script src="./js/index.js"></script>
+</body>
+</html>

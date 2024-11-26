@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factura de Envío de Dinero</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .form-container, .invoice-container {
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: 500px;
+      margin: auto;
+      background-color: #f9f9f9;
+    }
+    .form-container {
+      margin-bottom: 20px;
+    }
+    .invoice-container {
+      display: none;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    .btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container"> 
+
+    <label for="sender">Fecha:</label><br>
+      <input type="datetime-local" id="date" name="sender" required><br><br>
+
+
+    <h2>Generar Factura de Envío de Dinero</h2>
+    <form id="invoice-form">
+      <label for="sender">Nombre del Remitente:</label><br>
+      <input type="text" id="sender" name="sender" required><br><br>
+
+      <label for="amount">Dirección:</label><br>
+      <input type="text" id="direction" name="amount" step="0.01" required><br><br>
+
+      <label for="amount">Nº DIP:</label><br>
+      <input type="number" id="dip" name="amount" step="0.01" required><br><br>
+
+      <label for="amount">Nº Telefono remitente:</label><br>
+      <input type="tel" id="telremitente" name="amount" step="0.01" required><br><br>
+
+      <label for="receiver">Nombre del Destinatario:</label><br>
+      <input type="text" id="receiver" name="receiver" required><br><br>
+
+      <label for="amount">Monto Enviado (XAF):</label><br>
+      <input type="number" id="amount" name="amount" step="0.01" required><br><br>
+
+      <label for="fee">Tarifa de Envío (XAF):</label><br>
+      <input type="number" id="fee" name="fee" step="0.01" required><br><br>
+
+      <label for="exchange-rate">Tasa de Cambio:</label><br>
+      <input type="number" id="exchange-rate" name="exchange-rate" step="0.0001" value="655.957" required><br><br>
+
+      <button type="button" class="btn" onclick="generateInvoice()">Generar Factura</button>
+    </form>
+  </div>
+
+  <div class="invoice-container" id="invoice">
+    <p><strong>Fecha:</strong> <span id="invoice-date"></span></p>
+    <h2 style="text-align: center;">Factura - GMT NACIONAL</h2>
+    <p><strong>Número de Factura:</strong> <span id="invoice-number"></span></p>
+    <p><strong>Remitente:</strong> <span id="invoice-sender"></span></p>
+    <p><strong>Dirección:</strong> <span id="invoice-direction"></span></p>
+    <p><strong>Nº DIP:</strong> <span id="invoice-dip"></span></p>
+    <p><strong>Tel. remitente:</strong> <span id="invoice-telremitente"></span></p>
+    <p><strong>Destinatario:</strong> <span id="invoice-receiver"></span></p>
+    <p><strong>Monto Enviado:</strong> <span id="invoice-amount"></span> FCFA</p>
+    <p><strong>Tarifa de Envío:</strong> <span id="invoice-fee"></span> FCFA</p>
+    <p><strong>Tasa de Cambio:</strong> <span id="invoice-exchange-rate"></span></p>
+    <p><strong>Monto a Recibir:</strong> <span id="invoice-received"></span> €</p>
+    <button class="btn" onclick="printInvoice()">Imprimir Factura</button>
+  </div>
+
+  <script>
+    function generateRandomInvoiceNumber() {
+      return "GMT" + Math.floor(Math.random() * 1000000); // Genera un número aleatorio con prefijo "WU"
+    }
+
+    function calculateAmountReceived(amount, exchangeRate) {
+      return (amount / exchangeRate).toFixed(2); // Calcula el monto a recibir con dos decimales
+    }
+
+    function generateInvoice() {
+      // Obtener los valores del formulario
+      const date = document.getElementById("date").value;
+      const sender = document.getElementById("sender").value;
+      const direction = document.getElementById("direction").value;
+      const dip = document.getElementById("dip").value;
+      const telremitente = document.getElementById("telremitente").value;
+      const receiver = document.getElementById("receiver").value;
+      const amount = parseFloat(document.getElementById("amount").value);
+      const fee = parseFloat(document.getElementById("fee").value);
+      const exchangeRate = parseFloat(document.getElementById("exchange-rate").value);
+
+      // Validar los campos del formulario
+      if ( !date || !sender || !direction || isNaN(amount) || !receiver || isNaN(telremitente) || isNaN(amount) || isNaN(fee) || isNaN(exchangeRate)) {
+        alert("Por favor, completa todos los campos correctamente.");
+        return;
+      }
+
+      // Generar número de factura y calcular monto recibido
+      const invoiceNumber = generateRandomInvoiceNumber();
+      const amountReceived = calculateAmountReceived(amount, exchangeRate);
+
+      // Mostrar los datos en la factura
+      document.getElementById("invoice-date").innerText = date;
+      document.getElementById("invoice-number").innerText = invoiceNumber;
+      document.getElementById("invoice-sender").innerText = sender;
+      document.getElementById("invoice-direction").innerText = direction;
+      document.getElementById("invoice-dip").innerText = dip;
+      document.getElementById("invoice-telremitente").innerText = telremitente;
+      document.getElementById("invoice-receiver").innerText = receiver;
+      document.getElementById("invoice-amount").innerText = amount.toFixed(2);
+      document.getElementById("invoice-fee").innerText = fee.toFixed(2);
+      document.getElementById("invoice-exchange-rate").innerText = exchangeRate.toFixed(4);
+      document.getElementById("invoice-received").innerText = amountReceived;
+
+      // Mostrar la factura y ocultar el formulario
+      document.querySelector(".form-container").style.display = "none";
+      document.querySelector(".invoice-container").style.display = "block";
+    }
+
+    function printInvoice() {
+      // Imprimir el contenido de la factura
+      const invoice = document.getElementById("invoice").innerHTML;
+      const originalContent = document.body.innerHTML;
+
+      document.body.innerHTML = invoice;
+      window.print();
+      document.body.innerHTML = originalContent;
+      location.reload(); // Recargar la página después de imprimir
+    }
+  </script>
+</body>
+</html>

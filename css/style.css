@@ -102,15 +102,17 @@ body {
     margin: 5px;
     border-radius: 3px;
     border: 1px solid gray;
-    height: 28px;
+    height: 25px;
   }
   .invoice-container p {
     font-weight: bold;
-    margin: 5px;
+    margin: 2px;
+    font-size: 14px;
   }
   .invoice-container span {
     font-weight: lighter;
-    margin: 3px;
+    margin: 2px;
+    font-size: 14px;
   }
   .superior {
     display: grid;
@@ -120,7 +122,6 @@ body {
   .title2 {
     text-align: right;
     color: #f11010;
-    margin: 10px;
     font-size: 22px;
   }
   .codigo {

@@ -1,5 +1,12 @@
 
-    
+const formatPrecio = (precio) => {
+  const newPrecio = new window.Intl.NumberFormat("es-ES", {
+      style: "currency",
+      currency: "XAF"
+  }).format(precio);
+  return newPrecio;
+}
+
 function generateRandomInvoiceNumber() {
   return "GMT" + Math.floor(Math.random() * 10000000); // Genera un número aleatorio con prefijo "gmt"
 }

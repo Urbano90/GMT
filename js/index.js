@@ -1,11 +1,5 @@
 
-const formatPrecio = (precio) => {
-  const newPrecio = new window.Intl.NumberFormat("es-ES", {
-      style: "currency",
-      currency: "XAF"
-  }).format(precio);
-  return newPrecio;
-}
+
 
 function generateRandomInvoiceNumber() {
   return "GMT" + Math.floor(Math.random() * 10000000); // Genera un número aleatorio con prefijo "gmt"
@@ -37,25 +31,25 @@ function generateInvoice() {
   // Generar número de factura y calcular monto recibido
   const invoiceNumber = generateRandomInvoiceNumber();
 
-  // Mostrar los datos en la factura
-  document.getElementById("invoice-date").innerText = date;
-  document.getElementById("invoice-number").innerText = invoiceNumber;
 
-  document.getElementById("invoice-agente").innerText = agente;
-  document.getElementById("invoice-agencia").innerText = agencia;
-  document.getElementById("invoice-contacto").innerText = contacto;
+  // Mostrar los datos en la factura
+  document.querySelectorAll("#invoice-date").forEach(el => el.innerText = date);
+  document.querySelectorAll("#invoice-number").forEach(el => el.innerText = invoiceNumber);
+
+  document.querySelectorAll("#invoice-agente").forEach(el => el.innerText = agente);
+  document.querySelectorAll("#invoice-agencia").forEach(el => el.innerText = agencia);
+  document.querySelectorAll("#invoice-contacto").forEach(el => el.innerText = contacto);
 
   
-  document.getElementById("invoice-sender").innerText = sender;
-  document.getElementById("invoice-direction").innerText = direction;
-  document.getElementById("invoice-dip").innerText = dip;
-  document.getElementById("invoice-telremitente").innerText = telremitente;
-  document.getElementById("invoice-receiver").innerText = receiver;
-  document.getElementById("invoice-amount").innerText = amount.toFixed(1);
+  document.querySelectorAll("#invoice-sender").forEach(el => el.innerText = sender);
+  document.querySelectorAll("#invoice-direction").forEach(el => el.innerText = direction);
+  document.querySelectorAll("#invoice-dip").forEach(el => el.innerText = dip);
+  document.querySelectorAll("#invoice-telremitente").forEach(el => el.innerText = telremitente);
+  document.querySelectorAll("#invoice-amount").forEach(el => el.innerText = amount.toFixed(1));
 
-  document.getElementById("invoice-receiver").innerText = receiver;
-  document.getElementById("invoice-directionreceiver").innerText = directionreceiver;
-  document.getElementById("invoice-telreceive").innerText = telreceive;
+  document.querySelectorAll("#invoice-receiver").forEach(el => el.innerText = receiver);
+  document.querySelectorAll("#invoice-directionreceiver").forEach(el => el.innerText = directionreceiver);
+  document.querySelectorAll("#invoice-telreceive").forEach(el => el.innerText = telreceive);
 
 
   // Mostrar la factura y ocultar el formulario

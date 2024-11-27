@@ -34,8 +34,8 @@
 
     <h2 class="title">REGISTRO DE DATOS</h2>
 
-    <label class="date" for="sender">Fecha:
-      <input type="datetime-local" class="date" id="date" name="sender" required>
+    <label class="date" for="date">Fecha:
+      <input type="datetime-local" class="date" id="date" name="date" required>
     </label>
     <form class="invoice-form" id="invoice-form">
 
@@ -77,8 +77,8 @@
     <!--Datos del Beneficiario -->
     <div class="beneficiario">
       <h3>Datos del Beneficiario</h3>
-      <label for="sender">Nombre del Beneficiario:
-        <input type="text" id="receiver" name="sender" required>
+      <label for="receiver">Nombre del Beneficiario:
+        <input type="text" id="receiver" name="receiver" required>
       </label> <br>
 
       <label for="directionreceiver">Dirección:
@@ -95,45 +95,90 @@
   </div>
 
   <div class="invoice-container" id="invoice">
-    <div class="img">
-      <img id="invoice-img"  src="./img/logo-GMT.png" alt="">
-      <div class="text-logo">
-        <strong>GLOBAL EXCHANGE FINANCE S.A</strong> <br>
-        <span>Oficina de cambio y envio  de dinero</span><br>
-        <span>Envio de dinero-Logistica- Cambio</span> <br>
-        <span>Tel: 333 096 514 / 222 686 783</span>
+    <div class="invoice-1">
+      <div class="img">
+        <img id="invoice-img"  src="./img/logo-GMT.png" alt="">
+        <div class="text-logo">
+          <strong>GLOBAL EXCHANGE FINANCE S.A</strong> <br>
+          <span>Oficina de cambio y envio  de dinero</span><br>
+          <span>Envio de dinero-Logistica- Cambio</span> <br>
+          <span>Tel: 333 096 514 / 222 686 783</span>
+        </div>
       </div>
-    </div>
-    <div class="superior">
-      <h3 class="title2">Factura - GMT NACIONAL</h3>
-      <p>Fecha: <span class="date" id="invoice-date"></span></strong> </p>
+      <div class="superior">
+        <h3 class="title2">Factura - GMT NACIONAL</h3>
+        <p>Fecha: <span class="date" id="invoice-date"></span></strong> </p>
+      </div>
+  
+      <div class="datos">
+        <div class="datos1">
+          <p>Agente: <span id="invoice-agente"></span></p>
+          <p>Agencia: <span id="invoice-agencia"></span></p>
+          <p>Contacto: <span id="invoice-contacto"></span></p> 
+          <p class="codigo">CÓDIGO: <span id="invoice-number"></span></p>
+          <h4>DATOS DEL BENEFICIARIO</h4>
+          <p>Destinatario:<span id="invoice-receiver"></span></p>
+          <p>Ciudad: <span id="invoice-directionreceiver"></span></p>
+          <p>Tel. destinatario: <span id="invoice-telreceive"></span></p> 
+      
+        </div>
+          <div class="datos2">
+            <h4>DATOS DEL REMITENTE</h4>
+          <p>Remitente: <span id="invoice-sender"></span></p>
+          <p>Dirección: <span id="invoice-direction"></span></p>
+          <p>Nº DIP: <span id="invoice-dip"></span></p>
+          <p>Tel. remitente: <span id="invoice-telremitente"></span></p>
+          <p>Monto Enviado: <span id="invoice-amount"></span></p>
+          </div>
+      </div>
+      <section class="firmas">
+        <div class="firma" id="firma">Firma cajero/a</div>
+        <div class="firma" id="firma">Firma cliente</div>
+      </section>
+    </div> 
+    <hr>
+    <div class="invoice-2">
+      <div class="img">
+        <img id="invoice-img"  src="./img/logo-GMT.png" alt="">
+        <div class="text-logo">
+          <strong>GLOBAL EXCHANGE FINANCE S.A</strong> <br>
+          <span>Oficina de cambio y envio  de dinero</span><br>
+          <span>Envio de dinero-Logistica- Cambio</span> <br>
+          <span>Tel: 333 096 514 / 222 686 783</span>
+        </div>
+      </div>
+      <div class="superior">
+        <h3 class="title2">Factura - GMT NACIONAL</h3>
+        <p>Fecha: <span class="date" id="invoice-date"></span></strong> </p>
+      </div>
+  
+      <div class="datos">
+        <div class="datos1">
+          <p>Agente: <span id="invoice-agente"></span></p>
+          <p>Agencia: <span id="invoice-agencia"></span></p>
+          <p>Contacto: <span id="invoice-contacto"></span></p> 
+          <p class="codigo">CÓDIGO: <span id="invoice-number"></span></p>
+          <h4>DATOS DEL BENEFICIARIO</h4>
+          <p>Destinatario: <span id="invoice-receiver"></span></p>
+          <p>Ciudad:<span id="invoice-directionreceiver"></span></p>
+          <p>Tel. destinatario: <span id="invoice-telreceive"></span></p> 
+      
+        </div>
+          <div class="datos2">
+            <h4>DATOS DEL REMITENTE</h4>
+          <p>Remitente: <span id="invoice-sender"></span></p>
+          <p>Dirección: <span id="invoice-direction"></span></p>
+          <p>Nº DIP: <span id="invoice-dip"></span></p>
+          <p>Tel. remitente: <span id="invoice-telremitente"></span></p>
+          <p>Monto Enviado: <span id="invoice-amount"></span> FCFA</p>
+          </div>
+      </div>
+      <section class="firmas">
+        <div class="firma" id="firma">Firma Cajero/a</div>
+        <div class="firma" id="firma">Firma Cliente</div>
+      </section>
     </div>
 
-    <div class="datos">
-      <div class="datos1">
-        <p>Agente: <span id="invoice-agente"></span></p>
-        <p>Agencia: <span id="invoice-agencia"></span></p>
-        <p>Contacto: <span id="invoice-contacto"></span></p> 
-        <p class="codigo">CÓDIGO: <span id="invoice-number"></span></p>
-        <h4>DATOS DEL BENEFICIARIO</h4>
-        <p>Destinatario:<span id="invoice-receiver"></span></p>
-        <p>Ciudad:<span id="invoice-directionreceiver"></span></p>
-        <p>Tel. destinatario:<span id="invoice-telreceive"></span></p> 
-    
-      </div>
-        <div class="datos2">
-          <h4>DATOS DEL REMITENTE</h4>
-        <p>Remitente: <span id="invoice-sender"></span></p>
-        <p>Dirección: <span id="invoice-direction"></span></p>
-        <p>Nº DIP: <span id="invoice-dip"></span></p>
-        <p>Tel. remitente: <span id="invoice-telremitente"></span></p>
-        <p>Monto Enviado: <span id="invoice-amount"></span> FCFA</p>
-        </div>
-    </div>
-    <section class="firmas">
-      <div class="firma" id="firma">Firma la Cajera</div>
-      <div class="firma" id="firma">Firma del Cliente</div>
-    </section>
   </div>
   <button class="btn, imprimir" onclick="printInvoice()">Imprimir Factura</button>
 
